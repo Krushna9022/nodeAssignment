@@ -1,7 +1,8 @@
 const express = require("express");
 const conn = require("./db");
 const app = express();
-
+//const path=require("path")
+//app.use(express.static(path.join(__dirname,"public")))
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
@@ -18,16 +19,7 @@ app.get("/coursemaster", (req, res) => {
 app.get("/addcourse", (req, res) => {
   res.render("addcourse.ejs");
 });
-app.post("/addcourse", (req, res) => {
-  let { cname } = req.body;
-  console.log(cname);
-  conn.query("insert into courses values(0,?)", [cname], (err, result) => {
-    if (!err) {
-      console.log("data inserted");
-      res.render("addcourse.ejs");
-    }
-  });
-});
+app.post("/addcourse", );
 
 app.get("/viewcourses", (req, res) => {
   conn.query("select * from courses", (err, result) => {
