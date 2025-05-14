@@ -16,10 +16,11 @@
     <%-include("studentmaster.ejs")%>
 
     <form class="form-group" action="/addstudent" method="post">
-        <input type="text" name="sname" placeholder="student name" class="form-control mt-3" >
-        <input type="text" name="email" placeholder="student email " class="form-control mt-3" >
-        <input type="text" name="contact" placeholder="student contact " class="form-control mt-3" >
-                <select class="form-select mt-3" aria-label="Default select example" name="courseId" id="">
+        <input type="text" name="sname" placeholder="student name" class="form-control mt-3" required>
+        <input type="text" name="email" placeholder="student email " class="form-control mt-3" required >
+        <input type="text" name="contact" placeholder="student contact " class="form-control mt-3" required>
+                <select class="form-select mt-3" aria-label="Default select example" name="courseId" id="" required>
+                    <option>select course</option>
                       <%data.forEach(t=>{%>
                         
                         <option value="<%=t.id%>"><%=t.cname%></option>
