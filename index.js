@@ -19,7 +19,16 @@ app.get("/coursemaster", (req, res) => {
 app.get("/addcourse", (req, res) => {
   res.render("addcourse.ejs");
 });
-app.post("/addcourse", );
+app.post("/addcourse", (req,res)=>
+{
+  const{sname,email,contact,courseId}=req.body;
+  conn.query("insert into student values(0,?,?,?,?)",[sname,email,contact,courseId],(err,result)=>{
+    if(!err)
+    {
+      res.redirect("/addcourse")
+    }
+  })
+});
 
 app.get("/viewcourses", (req, res) => {
   conn.query("select * from courses", (err, result) => {
